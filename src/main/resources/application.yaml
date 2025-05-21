@@ -1,0 +1,16 @@
+#Server Port Config
+server:
+  port: 9090
+
+#DataBase Configuration
+spring:
+  application:
+    name: finacle-banking-app
+  datasource:
+    url: jdbc:mysql://localhost:3306/banking-app-db
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
