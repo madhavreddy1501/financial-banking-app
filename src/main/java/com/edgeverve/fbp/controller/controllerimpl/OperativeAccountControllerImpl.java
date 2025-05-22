@@ -23,13 +23,13 @@ public class OperativeAccountControllerImpl implements OperativeAccountControlle
         return ResponseEntity.ok("Success");
     }
 
-    public OperativeAccount saveBankAccount(@RequestBody OperativeAccount operativeAccount) {
+    public OperativeAccount createOperativeAccount(@RequestBody OperativeAccount operativeAccount) {
         return bankAccountService.saveBankAccount(operativeAccount);
     }
-    public OperativeAccount findAccountById(@PathVariable("accountId") Long accountId) {
+    public OperativeAccount findAccountDetailsByAccountNumber(@PathVariable("accountId") Long accountId) {
         return bankAccountService.findAccountById(accountId);
     }
-    public List<OperativeAccount> fetchAllBankAccounts(){
+    public List<OperativeAccount> getAllOperativeAccounts(){
         return bankAccountService.fetchAllBankAccounts();
     }
 }
