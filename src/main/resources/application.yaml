@@ -1,6 +1,8 @@
 #Server Port Config
 server:
   port: 9090
+#  servlet:
+#    context-path: /app
 
 #DataBase Configuration
 spring:
