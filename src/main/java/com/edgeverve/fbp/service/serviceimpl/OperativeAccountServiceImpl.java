@@ -1,8 +1,11 @@
 package com.edgeverve.fbp.service.serviceimpl;
 
 import com.edgeverve.fbp.entity.OperativeAccount;
+import com.edgeverve.fbp.model.OperativeAccountDto;
 import com.edgeverve.fbp.repository.OperativeAccountRepo;
 import com.edgeverve.fbp.service.OperativeAccountService;
+import com.edgeverve.fbp.utils.MapperUtil;
+import com.edgeverve.fbp.utils.Utils;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,19 +15,29 @@ import java.util.List;
 
 @Service
 @Slf4j
-@AllArgsConstructor
 public class OperativeAccountServiceImpl implements OperativeAccountService {
-    private final OperativeAccountRepo bankAccountRepo;
-    public OperativeAccount saveBankAccount(OperativeAccount operativeAccount) {
-        log.info("@@@");
-        bankAccountRepo.save(operativeAccount);
-        return operativeAccount;
+    @Autowired
+    private OperativeAccountRepo operativeAccountRepo;
+    @Autowired
+    private Utils utils;
+    @Autowired
+    private MapperUtil mapperUtil;
+    public OperativeAccountDto createOperativeAccount(OperativeAccountDto operativeAccountDto) {
+//        log.info("@@@@@@@@@@@ createOperativeAccount ServiceImpl");
+        /**
+         * generating Account Number and setting to accountDetails
+         */
+        operativeAccountDto.getAccountDetails().setAccountNumber(utils.generateAccountNumber());
+        OperativeAccount operativeAccount=mapperUtil.mapOperativeAccountDtoToOperativeAccount(operativeAccountDto);
+        return mapperUtil.mapOperativeAccountToOperativeAccountDto(operativeAccountRepo.save(operativeAccount));
     }
 
-    public OperativeAccount findAccountById(Long id) {
-        return bankAccountRepo.findById(id).get();
+    public OperativeAccountDto findAccountById(Long id) {
+//        return bankAccountRepo.findById(id).get();
+        return null;
     }
-    public List<OperativeAccount> fetchAllBankAccounts() {
-        return bankAccountRepo.findAll();
+    public List<OperativeAccountDto> fetchAllBankAccounts() {
+//        return bankAccountRepo.findAll();
+        return null;
     }
 }

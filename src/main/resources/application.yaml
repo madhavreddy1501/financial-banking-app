@@ -16,3 +16,8 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+
+#Swagger Configuration
+springdoc:
+  swagger-ui:
+    path: /app/v1

@@ -1,6 +1,7 @@
 package com.edgeverve.fbp.controller;
 
 import com.edgeverve.fbp.entity.OperativeAccount;
+import com.edgeverve.fbp.model.OperativeAccountDto;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -28,11 +29,11 @@ public interface OperativeAccountController {
     ResponseEntity<String> ping();
     @Operation(description = "Api used to create Operative Account")
     @PostMapping("create-account")
-    OperativeAccount createOperativeAccount(@RequestBody OperativeAccount operativeAccount);
+    OperativeAccountDto createOperativeAccount(@RequestBody OperativeAccountDto operativeAccount);
     @Operation(description = "Api used to fetch the Account Details based on Account Number")
     @GetMapping("get-account/{accountId}")
-    OperativeAccount findAccountDetailsByAccountNumber(@PathVariable("accountNumber") Long accountNumber);
+    OperativeAccountDto findAccountDetailsByAccountNumber(@PathVariable("accountNumber") Long accountNumber);
     @Operation(description = "Api used to fetch all Operative Accounts")
     @GetMapping
-    List<OperativeAccount> getAllOperativeAccounts();
+    List<OperativeAccountDto> getAllOperativeAccounts();
 }
